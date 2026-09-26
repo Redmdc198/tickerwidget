@@ -27,3 +27,5 @@ All delay states remain UNKNOWN until runtime/account entitlement is verified. T
 
 ## Benzinga authentication
 Cockpit V2 authenticates Benzinga server-side with the `Authorization: token <key>` header. The secret remains in Vercel environment variables and is never sent to browser JavaScript or appended to provider request URLs.
+
+<!-- KER-22 preview env refresh 2026-09-26 -->
