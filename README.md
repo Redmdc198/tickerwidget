@@ -24,3 +24,6 @@ No route returns the secret or the matching variable name.
 /api/massive?action=news&symbol=REI
 
 All delay states remain UNKNOWN until runtime/account entitlement is verified. TradingView stays visual context; thinkorswim/broker evidence stays execution truth.
+
+## Benzinga authentication
+Cockpit V2 authenticates Benzinga server-side with the `Authorization: token <key>` header. The secret remains in Vercel environment variables and is never sent to browser JavaScript or appended to provider request URLs.
