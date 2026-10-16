@@ -1,1 +1,79 @@
-.rd-provider-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:12px}.rd-provider-panel{border:1px solid #3c2d26;background:linear-gradient(180deg,#1c1715,#12100f);border-radius:12px;overflow:hidden;box-shadow:0 14px 40px rgba(0,0,0,.24)}.rd-provider-head{display:flex;justify-content:space-between;gap:10px;padding:11px 12px;border-bottom:1px solid #3c2d26;font-size:.76rem;font-weight:850;letter-spacing:.055em;text-transform:uppercase}.rd-provider-head span:last-child{color:#c49a47;font-size:.64rem}.rd-provider-body{padding:10px;min-height:76px}.rd-kpi-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.rd-kpi{border:1px solid #3b2d27;background:#0e0d0d;border-radius:9px;padding:9px;min-width:0}.rd-kpi span{display:block;color:#9f9991;font-size:.63rem;text-transform:uppercase;letter-spacing:.08em}.rd-kpi strong{display:block;margin-top:3px;font-size:.82rem;overflow:hidden;text-overflow:ellipsis}.rd-health-row{display:grid;grid-template-columns:100px 1fr auto;gap:8px;align-items:center;padding:7px 0;border-bottom:1px solid #2c211d;font-size:.72rem}.rd-health-row:last-child{border-bottom:0}.rd-health-row small,.rd-news-row small{color:#9f9991}.rd-state-good{color:#5fbf87}.rd-state-warn{color:#d7ad58}.rd-state-bad{color:#d96565}.rd-news-row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid #2d211c}.rd-news-row:last-child{border-bottom:0}.rd-news-row strong{display:block;font-size:.76rem;line-height:1.35}.rd-news-row small{display:block;margin-top:4px;font-size:.65rem}.rd-news-row a{align-self:center;border:1px solid #4b392f;border-radius:7px;padding:6px 8px;color:#c49a47;text-decoration:none;font-size:.62rem;font-weight:800}.rd-empty{padding:16px;color:#b9b1aa;font-size:.74rem;text-align:center}@media(max-width:900px){.rd-provider-grid{grid-template-columns:1fr}.rd-kpi-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.rd-provider-toolbar{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  align-items:center;
+  margin-top:12px;
+  padding:10px 12px;
+  border:1px solid #3c2d26;
+  background:linear-gradient(180deg,#1b1513,#12100f);
+  border-radius:10px
+}
+.rd-provider-toolbar>div{display:flex;gap:9px;align-items:baseline;flex-wrap:wrap}
+.rd-provider-toolbar strong{font-size:.78rem;letter-spacing:.055em;text-transform:uppercase}
+.rd-provider-toolbar span{font-size:.67rem;color:#9f9991}
+.rd-provider-toolbar button{
+  border:1px solid #6d4d37;
+  background:#2b1712;
+  color:#e9dfd6;
+  border-radius:8px;
+  padding:7px 10px;
+  font-size:.68rem;
+  font-weight:800;
+  cursor:pointer
+}
+.rd-provider-toolbar button:hover{border-color:#c49a47;color:#fff}
+.rd-provider-toolbar button:disabled{opacity:.55;cursor:wait}
+
+.rd-provider-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:12px}
+.rd-provider-wide{grid-column:1/-1}
+.rd-provider-panel{border:1px solid #3c2d26;background:linear-gradient(180deg,#1c1715,#12100f);border-radius:12px;overflow:hidden;box-shadow:0 14px 40px rgba(0,0,0,.24)}
+.rd-provider-head{display:flex;justify-content:space-between;gap:10px;padding:11px 12px;border-bottom:1px solid #3c2d26;font-size:.76rem;font-weight:850;letter-spacing:.055em;text-transform:uppercase}
+.rd-provider-head span:last-child{color:#c49a47;font-size:.64rem}
+.rd-provider-body{padding:10px;min-height:76px}
+.rd-kpi-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.rd-kpi{border:1px solid #3b2d27;background:#0e0d0d;border-radius:9px;padding:9px;min-width:0}
+.rd-kpi span{display:block;color:#9f9991;font-size:.63rem;text-transform:uppercase;letter-spacing:.08em}
+.rd-kpi strong{display:block;margin-top:3px;font-size:.82rem;overflow:hidden;text-overflow:ellipsis}
+.rd-kpi-grid .rd-meta-line{grid-column:1/-1}
+.rd-meta-line{display:flex;gap:8px 14px;flex-wrap:wrap;padding:8px 2px 2px;color:#9f9991;font-size:.62rem;border-top:1px solid #2c211d;margin-top:7px}
+.rd-health-row{display:grid;grid-template-columns:140px 120px minmax(0,1fr);gap:8px;align-items:center;padding:7px 0;border-bottom:1px solid #2c211d;font-size:.70rem}
+.rd-health-row:last-child{border-bottom:0}
+.rd-health-row small,.rd-news-row small,.rd-halt-row small,.rd-halt-clear small{color:#9f9991}
+.rd-state-good{color:#5fbf87}
+.rd-state-warn{color:#d7ad58}
+.rd-state-bad{color:#d96565}
+
+.rd-news-row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid #2d211c}
+.rd-news-row:last-child{border-bottom:0}
+.rd-news-row strong{display:block;font-size:.76rem;line-height:1.35}
+.rd-news-row small{display:block;margin-top:4px;font-size:.65rem}
+.rd-news-row a{align-self:center;border:1px solid #4b392f;border-radius:7px;padding:6px 8px;color:#c49a47;text-decoration:none;font-size:.62rem;font-weight:800}
+.rd-event-chip{display:inline-block;margin:0 6px 4px 0;border:1px solid #66442d;border-radius:999px;padding:2px 6px;color:#d7ad58;font-size:.57rem;font-weight:900;letter-spacing:.08em}
+
+.rd-halt-clear{display:grid;gap:4px;padding:10px;border:1px solid #294533;background:#0d1711;border-radius:9px}
+.rd-halt-clear strong{color:#5fbf87;font-size:.82rem}
+.rd-halt-clear span{font-size:.73rem}
+.rd-halt-clear small{font-size:.63rem;line-height:1.35}
+.rd-halt-row{display:grid;grid-template-columns:130px 120px minmax(0,1fr);gap:8px;padding:8px 0;border-bottom:1px solid #2d211c;font-size:.70rem}
+.rd-halt-row:last-child{border-bottom:0}
+.rd-halt-row strong{color:#d7ad58}
+
+.rd-empty{padding:16px;color:#b9b1aa;font-size:.74rem;text-align:center}
+
+@media(max-width:900px){
+  .rd-provider-grid{grid-template-columns:1fr}
+  .rd-provider-wide{grid-column:1}
+  .rd-kpi-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .rd-health-row{grid-template-columns:120px 1fr}
+  .rd-health-row small{grid-column:1/-1}
+  .rd-halt-row{grid-template-columns:1fr 1fr}
+  .rd-halt-row small{grid-column:1/-1}
+}
+
+@media(max-width:560px){
+  .rd-provider-toolbar{align-items:stretch;flex-direction:column}
+  .rd-provider-toolbar button{width:100%}
+  .rd-kpi-grid{grid-template-columns:1fr 1fr}
+  .rd-meta-line{display:grid;grid-template-columns:1fr 1fr}
+}
