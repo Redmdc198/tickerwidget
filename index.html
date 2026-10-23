@@ -26,6 +26,23 @@
         <div class="panel-head"><div class="panel-title">Five Active Watchlists</div><div class="tiny" id="listCount">0 symbols</div></div>
         <div class="watch-tabs" id="watchTabs"></div>
         <div class="watch-tools"><input id="watchSearch" class="search" type="search" placeholder="Filter current watchlist…" aria-label="Filter current watchlist" /></div>
+        <div class="market-tools">
+          <select id="watchSort" class="market-select" aria-label="Sort current watchlist">
+            <option value="symbol">Sort: Symbol</option>
+            <option value="pct-desc">Market % Change ↓</option>
+            <option value="pct-asc">Market % Change ↑</option>
+            <option value="price-desc">Price ↓</option>
+            <option value="price-asc">Price ↑</option>
+          </select>
+          <select id="watchMoveFilter" class="market-select" aria-label="Filter by market percent change">
+            <option value="all">All movers</option>
+            <option value="gainers">Gainers</option>
+            <option value="losers">Losers</option>
+            <option value="abs3">|Change| ≥ 3%</option>
+          </select>
+          <button id="scanMarket" class="ghost-btn scan-btn" type="button">SCAN MARKET %</button>
+          <span class="tiny scan-status" id="scanStatus">Market % change: scan to load</span>
+        </div>
         <div class="ticker-chips" id="tickerChips"></div>
         <div class="quote-box" id="quoteMount"><div class="loading"><div><div class="spinner"></div>Loading quote panel…</div></div><div class="fallback">Quote panel unavailable. <a href="https://www.tradingview.com/markets/stocks-usa/" target="_blank" rel="noopener">Open TradingView U.S. stocks</a>.</div></div>
         <div class="quote-nav"><button id="quotePrev" type="button">← Previous quotes</button><span class="tiny" id="quotePage">1 / 1</span><button id="quoteNext" type="button">Next quotes →</button></div>
