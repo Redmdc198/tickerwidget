@@ -1,0 +1,22 @@
+name: Red Dagger Provider UI Tests
+on:
+  pull_request:
+    branches: [marketticker]
+    paths:
+      - provider-cockpit.js
+      - tests/**
+      - .github/workflows/provider-ui-tests.yml
+  push:
+    branches: [ker-39-provider-render-hardening-20261024]
+permissions:
+  contents: read
+jobs:
+  provider-ui:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Run provider cockpit regression tests
+        run: node --version && node --test tests/provider-cockpit.test.cjs
