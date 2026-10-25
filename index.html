@@ -15,11 +15,11 @@
       <div>
         <div class="brand-kicker">Red Dagger • Public Market Context</div>
         <h1>Red Dagger Market Board</h1>
-        <p class="subtitle">A compact command-deck market cockpit built from public TradingView widgets. No private journal records, credentials, proprietary catalyst grades, AI logic, or Red Dagger strategy rules are exposed here.</p>
+        <p class="subtitle">A compact command-deck market cockpit built from public TradingView widgets plus read-only provider intelligence. No private journal records, credentials, proprietary catalyst grades, AI logic, or Red Dagger strategy rules are exposed here.</p>
       </div>
       <div class="status-badge">PUBLIC EMBED BOARD</div>
     </header>
-    <div class="disclaimer"><strong>Data note:</strong><span>Market quotes may be real-time or delayed depending on exchange entitlements. thinkorswim remains the execution-data authority.</span></div>
+    <div class="disclaimer"><strong>Data note:</strong><span>Market quotes may be real-time or delayed depending on exchange/provider entitlements. thinkorswim remains the execution-data authority. Provider facts do not become Red Dagger judgments automatically.</span></div>
     <section class="ticker-shell" id="tickerTape" aria-label="Market ticker tape"><div class="loading"><div><div class="spinner"></div>Loading market tape…</div></div><div class="fallback">Ticker tape unavailable. <a href="https://www.tradingview.com/markets/" target="_blank" rel="noopener">Open TradingView markets</a>.</div></section>
     <div class="grid">
       <aside class="panel" aria-label="Active watchlists">
@@ -54,31 +54,45 @@
         <div class="chart-note">Use thinkorswim for Time &amp; Sales, Level II, TPO/Volume Profile and the proprietary Red Dagger Welkin study.</div>
       </main>
     </div>
+
+    <div class="rd-provider-toolbar" aria-label="Provider intelligence controls">
+      <div>
+        <strong>Provider Intelligence</strong>
+        <span id="rdRefreshStamp">Read-only server-backed evidence · refreshes on symbol change</span>
+      </div>
+      <button id="rdRefreshBtn" type="button">Refresh intelligence</button>
+    </div>
+
     <section class="rd-provider-grid" aria-label="Red Dagger provider-backed intelligence">
       <div class="rd-provider-panel">
         <div class="rd-provider-head"><span>Watchlist Intelligence</span><span>FINNHUB</span></div>
         <div class="rd-provider-body rd-kpi-grid" id="rdQuoteIntel"><div class="rd-empty">Loading Finnhub status…</div></div>
       </div>
       <div class="rd-provider-panel">
+        <div class="rd-provider-head"><span>Halt / Resume Watch</span><span>BENZINGA</span></div>
+        <div class="rd-provider-body" id="rdHaltIntel"><div class="rd-empty">Checking halt/resume evidence…</div></div>
+      </div>
+      <div class="rd-provider-panel">
         <div class="rd-provider-head"><span>Previous-Day Market Cross-check</span><span>MASSIVE</span></div>
         <div class="rd-provider-body rd-kpi-grid" id="rdMassiveIntel"><div class="rd-empty">Loading Massive status…</div></div>
       </div>
       <div class="rd-provider-panel">
+        <div class="rd-provider-head"><span>Endpoint Health</span><span>SYSTEMS</span></div>
+        <div class="rd-provider-body" id="rdProviderHealth"><div class="rd-empty">Checking endpoint runtime state…</div></div>
+      </div>
+      <div class="rd-provider-panel rd-provider-wide">
         <div class="rd-provider-head"><span>Catalyst Watch</span><span>BENZINGA</span></div>
         <div class="rd-provider-body" id="rdCatalystIntel"><div class="rd-empty">Loading Benzinga status…</div></div>
       </div>
-      <div class="rd-provider-panel">
-        <div class="rd-provider-head"><span>Provider Health</span><span>SYSTEMS</span></div>
-        <div class="rd-provider-body" id="rdProviderHealth"><div class="rd-empty">Checking provider configuration…</div></div>
-      </div>
     </section>
+
     <div class="below">
       <details class="panel lazy-panel" data-widget="risk"><summary><div class="summary-row"><div class="summary-left">Risk Compass</div><div class="chev">⌄</div></div></summary><div class="lazy-content" id="riskMount"><div class="loading"><div><div class="spinner"></div>Open panel to load directional context…</div></div><div class="fallback">Risk Compass unavailable. <a href="https://www.tradingview.com/markets/" target="_blank" rel="noopener">Open TradingView markets</a>.</div></div><div class="chart-note">Directional context board only — no proprietary automated risk score is calculated.</div></details>
       <details class="panel lazy-panel" data-widget="heatmap"><summary><div class="summary-row"><div class="summary-left">U.S. Sector Heatmap</div><div class="chev">⌄</div></div></summary><div class="lazy-content" id="heatmapMount"><div class="loading"><div><div class="spinner"></div>Open panel to load sector heatmap…</div></div><div class="fallback">Heatmap unavailable. <a href="https://www.tradingview.com/heatmap/stock/" target="_blank" rel="noopener">Open TradingView heatmap</a>.</div></div></details>
       <details class="panel lazy-panel" data-widget="news"><summary><div class="summary-row"><div class="summary-left">News &amp; Catalysts</div><div class="chev">⌄</div></div></summary><div class="intel-buttons"><a href="https://www.sec.gov/edgar/search/" target="_blank" rel="noopener">SEC EDGAR</a><a href="https://stocktwits.com/" target="_blank" rel="noopener">Stocktwits</a><a href="https://www.tradingview.com/markets/stocks-usa/market-movers-active/" target="_blank" rel="noopener">TradingView Market Movers</a><a href="https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html" target="_blank" rel="noopener">CME FedWatch</a><a href="https://www.tradingview.com/markets/stocks-usa/sectorandindustry-sector/" target="_blank" rel="noopener">TradingView Sector Performance</a></div><div class="lazy-content" id="newsMount"><div class="loading"><div><div class="spinner"></div>Open panel to load symbol news…</div></div><div class="fallback">News panel unavailable. <a id="newsFallbackLink" href="https://www.tradingview.com/news/" target="_blank" rel="noopener">Open TradingView news</a>.</div></div><div class="chart-note">Headlines shown here are public market news. They are not verified Red Dagger catalyst grades.</div></details>
       <details class="panel lazy-panel" data-widget="calendar"><summary><div class="summary-row"><div class="summary-left">U.S. Economic Calendar</div><div class="chev">⌄</div></div></summary><div class="lazy-content" id="calendarMount"><div class="loading"><div><div class="spinner"></div>Open panel to load U.S. events…</div></div><div class="fallback">Economic calendar unavailable. <a href="https://www.tradingview.com/economic-calendar/" target="_blank" rel="noopener">Open TradingView calendar</a>.</div></div></details>
     </div>
-    <footer>TradingView widgets and market data are provided by TradingView and subject to TradingView/exchange availability and delay rules. This board is a public market-context display and does not publish private Red Dagger records, proprietary studies, grading logic, account information, or trading instructions.</footer>
+    <footer>TradingView widgets and provider data are subject to provider/exchange availability, entitlement, delay and licensing rules. This board is a market-context display and does not publish private Red Dagger records, proprietary studies, grading logic, account information, or trading instructions.</footer>
   </div>
 <script src="/provider-cockpit.js" defer></script>
 <script src="/app.js" defer></script>
