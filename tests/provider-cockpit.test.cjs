@@ -75,3 +75,42 @@ test("invalid symbol does not trigger provider calls", async () => {
   assert.equal(calls, 0);
   assert.equal(h.mounts["#rdQuoteIntel"].innerHTML, "");
 });
+
+
+test("latest symbol clears old panels and shows explicit failures when providers reject", async () => {
+  const h = harness(async url => {
+    if (url.includes("symbol=AAPL")) return responseFor(url);
+    if (url.startsWith("/api/")) { if (url === "/api/status") return responseFor(url); throw new Error("network failed"); }
+    return responseFor(url);
+  });
+  await h.refresh("AAPL");
+  const next = h.refresh("HIVE");
+  assert.doesNotMatch(h.mounts["#rdQuoteIntel"].innerHTML, />AAPL</);
+  await next;
+  for (const selector of ["#rdQuoteIntel", "#rdMassiveIntel", "#rdCatalystIntel"]) {
+    assert.match(h.mounts[selector].innerHTML, /HIVE.*SOURCE_ERROR/);
+    assert.doesNotMatch(h.mounts[selector].innerHTML, />AAPL</);
+  }
+  assert.match(h.mounts["#rdProviderHealth"].innerHTML, /SOURCE_ERROR/);
+});
+test("Massive historical panel discloses observation time and unknown delay", async () => {
+  const h = harness(async url => responseFor(url));
+  await h.refresh("HIVE");
+  const html = h.mounts["#rdMassiveIntel"].innerHTML;
+  assert.match(html, /Previous Day/);
+  assert.match(html, /Session as-of/);
+  assert.match(html, /UNKNOWN/);
+});
+test("Finnhub null change does not display invented 0 percent", async () => {
+  const h = harness(async url => {
+    const r = responseFor(url);
+    if (url.startsWith("/api/finnhub")) {
+      const orig = r.json;
+      r.json = async () => ({ ...await orig(), data: {c: 2.1, dp: null} });
+    }
+    return r;
+  });
+  await h.refresh("HIVE");
+  assert.doesNotMatch(h.mounts["#rdQuoteIntel"].innerHTML, />0\.00%</);
+  assert.match(h.mounts["#rdQuoteIntel"].innerHTML, /<strong>—<\/strong>/);
+});
