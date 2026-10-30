@@ -1,0 +1,22 @@
+name: Red Dagger market-data contract
+on:
+  pull_request:
+    paths:
+      - "api/**"
+      - "app.js"
+      - "tests/**"
+      - ".github/workflows/market-data-validation.yml"
+  push:
+    branches:
+      - ker-37-quote-validity-prev-session-20261030
+permissions:
+  contents: read
+jobs:
+  contract-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9f8c # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Run isolated market-data tests (no provider keys)
+        run: node --version && node --test tests/*.test.cjs
